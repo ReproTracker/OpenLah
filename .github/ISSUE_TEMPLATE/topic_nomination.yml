@@ -1,0 +1,99 @@
+name: "🔥 Topic Nomination / 话题提名"
+description: "Nominate a hot paper for community tracking / 提名一篇热门论文供社区跟踪"
+title: "[Nomination] "
+labels: ["topic/nomination", "status/needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔥 话题提名 / Topic Nomination
+        
+        发现了一篇值得关注的论文？提名它，让社区来跟踪其开源和复现状态！
+        Found a paper worth attention? Nominate it for community tracking of its open-source and reproducibility status!
+        
+        ---
+
+  - type: input
+    id: paper_title
+    attributes:
+      label: "📝 论文标题 / Paper Title"
+      description: "论文的标题（可选，如已知）/ Title of the paper (optional if known)"
+      placeholder: "e.g., GPT-5: xxx"
+    validations:
+      required: false
+
+  - type: input
+    id: paper_link
+    attributes:
+      label: "🔗 论文链接 / Paper Link"
+      description: "arXiv、OpenReview、会议页面等 / arXiv, OpenReview, conference page, etc."
+      placeholder: "https://arxiv.org/abs/xxxx.xxxxx"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: heat_estimate
+    attributes:
+      label: "🔥 热度预估 / Heat Estimate"
+      description: "你认为这篇论文的热度等级 / Your estimated heat level for this paper"
+      options:
+        - "heat/1 - 普通论文 / Regular paper"
+        - "heat/2 - 热门论文 / Hot paper (significant attention)"
+        - "heat/3 - 顶流论文 / Top paper (widely discussed)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: heat_evidence
+    attributes:
+      label: "📊 热度证据 / Heat Evidence (Optional)"
+      description: "为什么你认为这篇论文值得关注？/ Why do you think this paper deserves attention?"
+      placeholder: |
+        - Twitter 上有 1000+ 转发
+        - 发布 3 天内 GitHub stars > 5000
+        - 被多个 AI 媒体报道
+        - 引用数已超过 xxx
+    validations:
+      required: false
+
+  - type: textarea
+    id: initial_assessment
+    attributes:
+      label: "💭 初步评估 / Initial Assessment (Optional)"
+      description: "如果你已经了解一些开源/复现情况，可以在此说明 / If you already know something about open-source/repro status"
+      placeholder: |
+        - 作者声称会开源但目前仓库为空
+        - 已有社区复现但结果不符
+        - etc.
+    validations:
+      required: false
+
+  - type: input
+    id: your_twitter
+    attributes:
+      label: "🐦 你的 Twitter/X (Optional)"
+      description: "方便我们在完成跟踪后 @ 你 / So we can mention you when tracking is complete"
+      placeholder: "@your_handle"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 下一步 / Next Steps
+        
+        提交后，社区成员可以：
+        1. 认领这个提名
+        2. 调查论文的开源和复现状态
+        3. 创建完整的 Paper Tracking Issue
+        
+        After submission, community members can:
+        1. Claim this nomination
+        2. Investigate the paper's open-source and repro status
+        3. Create a full Paper Tracking Issue
+        
+        ---
+        
+        感谢你的提名！/ Thank you for your nomination!

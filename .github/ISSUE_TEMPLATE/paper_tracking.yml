@@ -1,0 +1,155 @@
+name: "📄 Paper Tracking / 论文跟踪"
+description: "Track the open-source and reproducibility status of a paper / 跟踪一篇论文的开源和复现状态"
+title: "[Paper] "
+labels: ["paper/tracking", "status/needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📄 论文跟踪 / Paper Tracking
+        
+        请填写以下信息来记录这篇论文的开源和复现状态。
+        Please fill in the following information to track this paper's open-source and reproducibility status.
+        
+        ---
+
+  # ===== 必填字段 / Required Fields =====
+  
+  - type: input
+    id: paper_title
+    attributes:
+      label: "📝 论文标题 / Paper Title"
+      description: "论文的完整标题 / Full title of the paper"
+      placeholder: "e.g., Attention Is All You Need"
+    validations:
+      required: true
+
+  - type: input
+    id: paper_link
+    attributes:
+      label: "🔗 论文链接 / Paper Link"
+      description: "arXiv、OpenReview、会议页面等 / arXiv, OpenReview, conference page, etc."
+      placeholder: "https://arxiv.org/abs/xxxx.xxxxx"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: heat
+    attributes:
+      label: "🔥 热度等级 / Heat Level"
+      description: "论文的关注度 / Level of attention this paper receives"
+      options:
+        - "heat/1 - 普通论文 / Regular paper"
+        - "heat/2 - 热门论文 / Hot paper (100+ citations)"
+        - "heat/3 - 顶流论文 / Top paper (widely discussed)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: open_status
+    attributes:
+      label: "📂 开源状态 / Open Status"
+      description: "代码的开源程度 / Level of open-source availability"
+      options:
+        - "open/none - 未开源 / No code released"
+        - "open/empty - 空仓库 / Empty repository"
+        - "open/broken - 损坏开源 / Code exists but broken"
+        - "open/partial - 部分开源 / Partially open (missing components)"
+        - "open/full - 完整开源 / Fully open (code, weights, data)"
+    validations:
+      required: true
+
+  - type: input
+    id: code_link
+    attributes:
+      label: "💻 代码链接 / Code Link"
+      description: "官方或作者提供的代码仓库（若无填 N/A）/ Official code repository (N/A if none)"
+      placeholder: "https://github.com/author/repo 或 N/A"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: repro_status
+    attributes:
+      label: "🔬 复现状态 / Repro Status"
+      description: "社区复现的结果 / Community reproduction results"
+      options:
+        - "repro/unknown - 未知 / No reproduction attempts yet"
+        - "repro/none - 无法尝试 / Cannot attempt (insufficient open-source)"
+        - "repro/mismatch - 无法复现 / Cannot reproduce (results don't match)"
+        - "repro/partial - 部分复现 / Partially reproduced"
+        - "repro/match - 完全复现 / Fully reproduced"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence_links
+    attributes:
+      label: "📎 证据链接 / Evidence Links"
+      description: "支持你判定的证据（每行一个链接）/ Evidence supporting your assessment (one link per line)"
+      placeholder: |
+        https://github.com/author/repo/issues/123
+        https://twitter.com/user/status/xxxxx
+        https://paperswithcode.com/paper/xxx
+    validations:
+      required: true
+
+  # ===== 可选字段 / Optional Fields =====
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## 📋 可选信息 / Optional Information
+
+  - type: input
+    id: venue_year
+    attributes:
+      label: "🏛️ 会议/年份 / Venue/Year"
+      description: "发表会议和年份 / Publication venue and year"
+      placeholder: "e.g., NeurIPS 2023, CVPR 2024, arXiv 2024"
+    validations:
+      required: false
+
+  - type: input
+    id: author_affiliation
+    attributes:
+      label: "🏢 作者机构 / Author Affiliation"
+      description: "主要作者所属机构 / Primary author affiliations"
+      placeholder: "e.g., Google DeepMind, OpenAI, Stanford"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: issue_tags
+    attributes:
+      label: "🏷️ 问题标签 / Issue Tags"
+      description: "选择适用的问题标签 / Select applicable issue tags"
+      options:
+        - label: "tag/no-weights - 缺少预训练权重 / Missing pretrained weights"
+        - label: "tag/no-train-code - 缺少训练代码 / Missing training code"
+        - label: "tag/bug-mismatch - 代码有 bug / Code has bugs"
+        - label: "tag/data-missing - 数据集不可获取 / Dataset unavailable"
+        - label: "tag/underdocumented - 文档不足 / Insufficient documentation"
+        - label: "tag/not-generalizable - 结果不可泛化 / Results not generalizable"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "📝 补充说明 / Additional Notes"
+      description: "其他相关信息 / Any other relevant information"
+      placeholder: "例如：作者承诺将在某日期开源..."
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ⚠️ **提交前请确认 / Before submitting:**
+        - 证据链接是否有效 / Evidence links are valid
+        - 状态判定是否准确 / Status assessment is accurate
+        - 没有重复提交 / Not a duplicate submission
+        
+        感谢你的贡献！/ Thank you for your contribution!

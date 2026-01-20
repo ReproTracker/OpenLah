@@ -1,0 +1,66 @@
+name: "📊 Update Leaderboard"
+
+on:
+  # Issue 相关事件触发
+  issues:
+    types:
+      - opened
+      - edited
+      - labeled
+      - unlabeled
+      - reopened
+  
+  # 每天 UTC 时间 00:00 运行
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # 手动触发
+  workflow_dispatch:
+
+# 设置权限
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  build-leaderboard:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "📥 Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          # 确保获取完整历史以便 push
+          fetch-depth: 0
+      
+      - name: "🐍 Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: "📊 Build leaderboard"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python scripts/build_leaderboard.py
+      
+      - name: "📝 Check for changes"
+        id: check_changes
+        run: |
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "📭 No changes to commit"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "📬 Changes detected"
+          fi
+      
+      - name: "🚀 Commit and push"
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "📊 Update leaderboard [skip ci]"
+          git push
