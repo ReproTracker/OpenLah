@@ -2,7 +2,7 @@
 
 > 按热度加权分数 (HeatWeightedScore) 排序，高热度但难复现的论文排名更高
 
-📅 **Last Updated**: 初始化 / Initialized
+📅 **Last Updated**: 2026-01-21 03:59 UTC
 
 ---
 
@@ -18,4 +18,4 @@
 - `NonReproScore = (1 - Openness) × ReproPenalty`
 - `HeatWeightedScore = Heat × NonReproScore`
 
-🔗 [返回主页](../README.md) | [排行榜首页](index.md)
+🔗 [返回主页](../README.md) | [查看所有 Issues](https://github.com/ReproTracker/OpenLah/issues?q=is%3Aissue+is%3Aopen+label%3Apaper%2Ftracking)
