@@ -2,7 +2,7 @@
 
 > 按热度加权分数 (HeatWeightedScore) 排序，高热度但难复现的论文排名更高
 
-📅 **Last Updated**: 2026-06-20 02:30 UTC
+📅 **Last Updated**: 2026-06-21 02:45 UTC
 
 ---
 
